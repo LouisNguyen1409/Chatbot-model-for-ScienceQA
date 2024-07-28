@@ -16,7 +16,7 @@ should probably proofread and complete it, then remove this comment. -->
 
 # llava-1.6-7b-hf-final
 
-This model is a fine-tuned version of [llava-hf/llava-v1.6-mistral-7b-hf](https://huggingface.co/llava-hf/llava-v1.6-mistral-7b-hf) on an unknown dataset.
+This model is a fine-tuned version of [llava-hf/llava-v1.6-mistral-7b-hf](https://huggingface.co/llava-hf/llava-v1.6-mistral-7b-hf) on an derek-thomas/ScienceQA.
 
 ## Model description
 
@@ -46,7 +46,7 @@ The following hyperparameters were used during training:
 
 ### Training results
 
-
+Accuracy ~80%
 
 ### Framework versions
 
