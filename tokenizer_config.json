@@ -1,0 +1,65 @@
+{
+  "add_bos_token": true,
+  "add_eos_token": false,
+  "add_prefix_space": null,
+  "added_tokens_decoder": {
+    "0": {
+      "content": "<unk>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "1": {
+      "content": "<s>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "2": {
+      "content": "</s>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "32000": {
+      "content": "<image>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "32001": {
+      "content": "<pad>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    }
+  },
+  "additional_special_tokens": [],
+  "bos_token": "<s>",
+  "chat_template": "<<SYS>>\nA chat between an user and an artificial intelligence assistant about Science Question Answering. The assistant gives helpful, detailed, and polite answers to the user's questions.\nBased on the image, question and hint, please choose one of the given choices that answer the question.\nGive yourself room to think by extracting the image, question and hint before choosing the choice.\nDon't return the thinking, only return the highest accuracy choice.\nMake sure your answers are as correct as possible.\n<</SYS>> \n{% for tag, content in messages.items() %}\n{% if tag == 'real_question' %}\nNow use the following image and question to choose the choice:\n{% for message in content %}\n{% if message['role'] == 'user' %}[INST] USER: {% else %}ASSISTANT: {% endif %}\n{% for item in message['content'] %}\n{% if item['type'] == 'text_question' %}\nQuestion: {{ item['question'] }}\n{% elif item['type'] == 'text_hint' %}\nHint: {{ item['hint'] }}\n{% elif item['type'] == 'text_choice' %}\nChoices: {{ item['choice'] }} [/INST]\n{% elif item['type'] == 'text_solution' %}\nSolution: {{ item['solution'] }}\n{% elif item['type'] == 'text_answer' %}\nAnswer: {{ item['answer'] }}{% elif item['type'] == 'image' %}<image>\n{% endif %}\n{% endfor %}\n{% if message['role'] == 'user' %}\n{% else %}\n{{eos_token}}\n{% endif %}{% endfor %}{% endif %}\n{% endfor %}",
+  "clean_up_tokenization_spaces": false,
+  "eos_token": "</s>",
+  "legacy": true,
+  "max_length": null,
+  "model_max_length": 1000000000000000019884624838656,
+  "pad_to_multiple_of": null,
+  "pad_token": "<pad>",
+  "pad_token_type_id": 0,
+  "padding_side": "left",
+  "processor_class": "LlavaNextProcessor",
+  "sp_model_kwargs": {},
+  "spaces_between_special_tokens": false,
+  "tokenizer_class": "LlamaTokenizer",
+  "unk_token": "<unk>",
+  "use_default_system_prompt": false
+}
