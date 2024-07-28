@@ -32,6 +32,16 @@ More information needed
 
 ## Training procedure
 
+## How to use
+```python
+model_id = "Louisnguyen/llava-1.6-7b-hf-final"
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+)
+model = LlavaNextForConditionalGeneration.from_pretrained(model_id,
+                                                      quantization_config=quantization_config,
+                                                      torch_dtype=torch.float16)
+```
 ### Training hyperparameters
 
 The following hyperparameters were used during training:
